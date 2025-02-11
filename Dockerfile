@@ -8,10 +8,10 @@ RUN apt-get update && \
     apt-get clean
 
 # Copy the script to the container
-COPY test.sh /usr/local/bin/test.sh
+COPY script.sh /usr/local/bin/script.sh
 
 # Make the script executable
-RUN chmod +x /usr/local/bin/test.sh
+RUN chmod +x /usr/local/bin/script.sh
 
 # Set the default command to run the script
-CMD ["/usr/local/bin/test.sh"]
+CMD ["/usr/local/bin/script.sh"]
