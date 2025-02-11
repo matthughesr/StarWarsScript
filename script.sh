@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# test.sh
+# script.sh
 # gets starship name and the pilots that fly it
 #Notes: -r helps with errors. Doesn't treat backslash as escape characters
 #Notes: curl -s is the silent version meaning no progress outputed 
