@@ -5,7 +5,7 @@
 #Notes: -r helps with errors. Doesn't treat backslash as escape characters
 #Notes: curl -s is the silent version meaning no progress outputed 
 #Notes: https://eliatra.com/blog/json-processing-command-line-jq/
-
+echo"-------------Starting Star Wars Script-------------"
 
 mainURL="https://swapi.dev/api/starships/"
 
@@ -37,5 +37,5 @@ echo "$starships" | while read -r oneShip;
     echo "----------------------------------------"
 done
 
-echo "bye bye."
+echo "Star Wars Script is done. Bye"
 exit 0
