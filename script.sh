@@ -37,5 +37,5 @@ echo "$starships" | while read -r oneShip;
     echo "----------------------------------------"
 done
 
-echo "bye bye"
+echo "bye bye."
 exit 0
