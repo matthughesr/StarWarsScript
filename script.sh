@@ -1,4 +1,4 @@
-s#!/bin/bash
+#!/bin/bash
 
 # script.sh
 # gets starship name and the pilots that fly it
