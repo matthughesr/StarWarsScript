@@ -1,19 +1,18 @@
 #!/bin/bash
 
 # script.sh
-# gets starship name and the pilots that fly it
+# This script gets starship name and the pilots that fly it
+
 #Notes: -r helps with errors. Doesn't treat backslash as escape characters
 #Notes: curl -s is the silent version meaning no progress message outputed 
 #Notes: https://eliatra.com/blog/json-processing-command-line-jq/
+
 echo ""
 echo "-------------Starting Star Wars Script-------------"
 
 mainURL="https://swapi.dev/api/starships/"
 
  
-count=0;
-
-
 while [[ -n $mainURL ]];
 do
 
@@ -51,6 +50,6 @@ do
     [[ "$mainURL" == "null" ]] && mainURL=""
    
 done
-#echo "There are $count starships"
+
 echo "Star Wars Script is done. Bye"
 exit 0
