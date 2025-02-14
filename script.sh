@@ -1,9 +1,9 @@
-#!/bin/bash
+s#!/bin/bash
 
 # script.sh
 # gets starship name and the pilots that fly it
 #Notes: -r helps with errors. Doesn't treat backslash as escape characters
-#Notes: curl -s is the silent version meaning no progress outputed 
+#Notes: curl -s is the silent version meaning no progress message outputed 
 #Notes: https://eliatra.com/blog/json-processing-command-line-jq/
 echo ""
 echo "-------------Starting Star Wars Script-------------"
