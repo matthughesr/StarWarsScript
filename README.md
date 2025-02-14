@@ -18,11 +18,11 @@ The script.sh file is a bash script that will find all the ships and the corespo
 ## Production Deployment Considerations
 
 ### Container Orchestration & Scaling:
-Deployment using orchestration tools (e.g., Kubernetes, Docker Swarm).
-Strategies for scaling the application (e.g., auto-scaling based on load).
+If I were to deploy this solution in a production enviroment I would use Docker Swarm for a quick easy solution.  Docker swarm is build into docker so it will be easier set up and is ideal for simple solutions like this. It also has built in load balancing to distribute traffic across multiple containers. Docker swarm does support scaling although it does require you to do it manually. Long term Kubernetes is a better option. Although setup will be longer it will yeild good results long term. A key differnece compared to Docker Swarm is Kubernetes comes with auto scaling which will make your life easier but it does not come with auto load balancing.
+
 
 ### Monitoring & Logging:
-
+The good thing about Kubernetes is it comes with built in monitoring and logging. 
 Tools and techniques to monitor the application’s health and performance.
 Strategies for centralized logging (e.g., ELK Stack, Fluentd).
 
