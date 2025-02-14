@@ -1,32 +1,58 @@
 #!/bin/bash
 
 # script.sh
-# gets starship name and the pilots that fly it
+# Gets starship name and the pilots that fly it
+
 #Notes: -r helps with errors. Doesn't treat backslash as escape characters
+#Notes: curl -f will Fail silently on HTTP errors
 #Notes: curl -s is the silent version meaning no progress outputed 
+#Notes: curl -S will print errors
+
 #Notes: https://eliatra.com/blog/json-processing-command-line-jq/
+
+
+#checkEmpty function takes two parameters and check if first parameter is empty.
+    #second parameter is error message
+checkEmpty (){
+     if [[ -z $1 || $1 = "null" ]]   # if empty or null
+    then
+        echo "Error: $2"        #print specifc error message passed into function
+        exit 1;                  #exit program
+    fi
+}
+
+
+
+
+
+
 echo ""
 echo "-------------Starting Star Wars Script-------------"
 
 mainURL="https://swapi.dev/api/starships/"
 
- 
-count=0;
 
-
-while [[ -n $mainURL ]];
+while [[ $mainURL != "" && $mainURL != "null" ]];
 do
 
     # Get the list of starships; includes all starship info. 
-    response=$(curl -s "$mainURL")
+    response=$(curl -fsS "$mainURL")
+  
+    checkEmpty "$response" "No response from $mainURL"  #check if got response
 
     #gets starship from the json file. 
     starships=$(echo "$response" | jq -c '.results[]')
+    
+    checkEmpty "$starships" "Unable to get results" #confirm not empty
+
 
     # Loop through each starship and get name 
     echo "$starships" | while read -r oneShip; 
         do
         name=$(echo "$oneShip" | jq -r '.name') #get name of ship
+        if [ -z "$name" ]; then
+            echo "Error: No starship found" #if starship is not found. Let user know
+        fi
         echo "Starship: $name"  #print out the name of ship
       
         
@@ -38,7 +64,12 @@ do
             echo "Pilots:"
             echo "$pilots" | while read -r pilot_url; # read in pilot URL until its empty
                 do
-                pilot_response=$(curl -s "$pilot_url")
+                pilot_response=$(curl -fsS "$pilot_url")
+
+                if [[ $pilot_response == "" || $pilot_response == "null" ]]
+                then echo "error getting pilot from $pilot_url"
+                fi
+
                 pilot_name=$(echo "$pilot_response" | jq -r '.name')
                 echo "  - $pilot_name"
             done
@@ -48,9 +79,7 @@ do
         done
         
     mainURL=$(echo "$response" | jq -r '.next')
-    [[ "$mainURL" == "null" ]] && mainURL=""
-   
 done
-#echo "There are $count starships"
+
 echo "Star Wars Script is done. Bye"
 exit 0
