@@ -4,13 +4,12 @@ Matthew Hughes
 ## Summary
 This solution will find all the ships and the corresponding pilots from the Star Wars API https://swapi.dev/. The solution is packaged into a Docker image and pushed to GitHub Container Registry using GitHub actions
 
--To achieve this result a bash script is used.The bash script uses the curl command to get the data from the API. Then it uses jq which is a tool that can easily get specific data from a json response. It then loops through each starship and gets the name of the pilots for that ship. Getting the name of the ship is pretty straight forward using jq. To get the name of the pilots for each ship it loops through the pilots array and does another curl and jq command to get their names. Once it reaches the end of the page it moves onto the next page until done. To make using the script easier I took advantage of github actions to create the docker image and push it to GitHub Container Registry for easy access. 
+To achieve this result a bash script is used.The bash script uses the curl command to get the data from the API. Then it uses jq which is a tool that can easily get specific data from a json response. It then loops through each starship and gets the name of the pilots for that ship. Getting the name of the ship is pretty straight forward using jq. To get the name of the pilots for each ship it loops through the pilots array and does another curl and jq command to get their names. Once it reaches the end of the page it moves onto the next page until done. To make using the script easier I took advantage of github actions to create the docker image and push it to GitHub Container Registry for easy access. 
 
 ## Instructions to run the container
-1. Open terminal and ensure docker is installed
-  -run "docker"
-2. Run docker container
-  -run "docker run ghcr.io/matthughesr/star-wars-ghcr:latest"
+1. Open terminal and ensure docker is installed. Run: "docker --version"
+   
+2. Run docker container. Run: "docker run ghcr.io/matthughesr/star-wars-ghcr:latest"
 
 3. Sit back and watch the script run
 
