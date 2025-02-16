@@ -3,12 +3,12 @@
 # script.sh
 # Gets starship name and the pilots that fly it
 
-#Notes: -r helps with errors. Doesn't treat backslash as escape characters
+#Notes: jq -r helps with errors. Doesn't treat backslash as escape characters
 #Notes: curl -f will Fail silently on HTTP errors
 #Notes: curl -s is the silent version meaning no progress outputed 
 #Notes: curl -S will print errors
 
-#Notes: https://eliatra.com/blog/json-processing-command-line-jq/
+
 
 
 #checkEmpty function takes two parameters and check if first parameter is empty.
@@ -32,7 +32,7 @@ echo "-------------Starting Star Wars Script-------------"
 mainURL="https://swapi.dev/api/starships/"
 
 
-while [[ $mainURL != "" && $mainURL != "null" ]];
+while [[ $mainURL != "" && $mainURL != "null" ]];        # makes sure that mainURL is not empty or null
 do
 
     # Get the list of starships; includes all starship info. 
@@ -78,7 +78,7 @@ do
          
         done
         
-    mainURL=$(echo "$response" | jq -r '.next')
+    mainURL=$(echo "$response" | jq -r '.next')        #go to next page
 done
 
 echo "Star Wars Script is done. Bye"
