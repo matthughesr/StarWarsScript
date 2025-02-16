@@ -15,27 +15,21 @@ The script.sh file is a bash script that will find all the ships and the corespo
 3. Sit back and watch the script run
 
 
+
 ## Production Deployment Considerations
 
 ### Container Orchestration & Scaling:
-If I were to deploy this solution in a production enviroment I would use Docker Swarm for a quick easy solution.  Docker swarm is build into docker so it will be easier set up and is ideal for simple solutions like this. It also has built in load balancing to distribute traffic across multiple containers. Docker swarm does support scaling although it does require you to do it manually. Long term Kubernetes is a better option. Although setup will be longer it will yeild good results long term. A key differnece compared to Docker Swarm is Kubernetes comes with auto scaling which will make your life easier but it does not come with auto load balancing.
-
+If I were to deploy this solution in a production environment I would Kubernetes. Although the setup will be more difficult than Docker Swarm it will be a great solution long term. A key difference compared to Docker Swarm is that Kubernetes comes with auto scaling which will make your life easier but it does not come with auto load balancing. Kubernetes comes with auto scaling depending on the current traffic which will make your life easier. One downside is Kubernetes  does not come with auto load balancing but third party tools are available.
 
 ### Monitoring & Logging:
-The good thing about Kubernetes is it comes with built in monitoring and logging. 
-Tools and techniques to monitor the application’s health and performance.
-Strategies for centralized logging (e.g., ELK Stack, Fluentd).
+The good thing about Kubernetes is it comes with built-in monitoring and logging. These tools can help monitor resource usage and performance of the application, they also ensure the health of the application through self healing. For centralized logging the ELK Stack is a good option. It will collect and analyze logs from the script's execution in one centralized location making troubleshooting easier. 
 
 ### CI/CD Pipeline:
-
-How you would integrate your Docker build process into a CI/CD pipeline.
-Steps for automated testing, security scanning, and deployment.
+GitHub offers some great tools to integrate the Docker build processes. Using GitHub actions makes life much easier when developing applications. This specific solution takes advantage of GitHub actions and GitHub Container Registry to automatically build the Docker Image and push it to GitHub Container Registry when changes are made to the repository. This ensures the docker image is always up to date with minimal effort. GitHub Container Registry is very helpful in publishing my Docker Image so that I can share with it with others easily
 
 ### Security & Reliability:
-
-Security considerations (e.g., vulnerability scanning, minimal base images, secrets management).
-Ensuring reliability and availability (e.g., health checks, redundancy, fault tolerance).
+In this solution I took advantage of GitHub secrets to store my personal access token in a safe manner so I can login into GitHub. Kubernetes offers enterprise-grade security through various security controls which are essential to production. This solution would take advantage of their network security and health checks to make sure everything is running securely and as it should. 
 
 ### Configuration Management:
-
 Handling configuration settings for different environments (development, staging, production) using environment variables or configuration files.
+
