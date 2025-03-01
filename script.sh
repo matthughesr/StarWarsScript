@@ -40,13 +40,13 @@ do
   
     checkEmpty "$response" "No response from $mainURL"  #check if got response
 
-    #gets starship from the json file. 
+    #gets elements from resutls array from the json file. 
     starships=$(echo "$response" | jq -c '.results[]')
     
     checkEmpty "$starships" "Unable to get results" #confirm not empty
 
 
-    # Loop through each starship and get name 
+    # Loop through each each element of result array and get starship name 
     echo "$starships" | while read -r oneShip; 
         do
         name=$(echo "$oneShip" | jq -r '.name') #get name of ship
