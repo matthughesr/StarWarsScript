@@ -8,10 +8,12 @@ To achieve this result a bash script is used.The bash script uses the curl comma
 
 ## Instructions to run the container
 1. Open terminal and ensure docker is installed. Run: "docker --version"
-   
-2. Run docker container. Run: "docker run ghcr.io/matthughesr/star-wars-ghcr:latest"
 
-3. Sit back and watch the script run
+2. Open Docker desktop (it sometimes needs to be open for it to work)
+   
+3. Run docker container. Run: "docker run ghcr.io/matthughesr/star-wars-ghcr:latest"
+
+4. Sit back and watch the script run
 
 
 
