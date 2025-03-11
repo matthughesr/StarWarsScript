@@ -3,15 +3,15 @@ name: Docker Image CI for GHCR
 on: 
   push:
     branches:
-      - main  #any push into main branch will trigger this to run
+      - main  # any push into the main branch will trigger this to run
 
 jobs:
   build_and_publish:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4    #gets code from repository
+      - uses: actions/checkout@v4    # gets code from the repository
       - name: Build and push the image
         run: |
-          docker login --username matthughesr --password ${{ secrets.GH_PAT }} ghcr.io    
-          docker build . --tag ghcr.io/matthughesr/star-wars-ghcr:latest
-          docker push ghcr.io/matthughesr/star-wars-ghcr:latest
+          docker login --username ${{ github.actor }} --password ${{ secrets.GH_PAT }} ghcr.io    
+          docker build . --tag ghcr.io/${{ github.actor }}/star-wars-ghcr:latest
+          docker push ghcr.io/${{ github.actor }}/star-wars-ghcr:latest
