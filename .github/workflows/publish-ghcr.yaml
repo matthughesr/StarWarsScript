@@ -1,7 +1,9 @@
 name: Docker Image CI for GHCR
 
 on: 
-  push   #any push into repository will trigger this to run
+  push:
+    branches:
+      - main  #any push into main branch will trigger this to run
 
 jobs:
   build_and_publish:
