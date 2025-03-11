@@ -1,6 +1,6 @@
 
 # Use 22.04 because it is well maintained and good with docker
-FROM ubuntu-22.04   
+FROM ubuntu:22.04   
 
 # Install necessary packages: curl, jq, and bash
 RUN apt-get update && \
